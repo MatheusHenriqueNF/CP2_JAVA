@@ -1,0 +1,1186 @@
+2025-10-01T19:59:32.182-03:00  INFO 26252 --- [CP-Drone] [main] b.c.f.CP_Drone.CpDroneApplicationTests   : Starting CpDroneApplicationTests using Java 24 with PID 26252 (started by Charllot in C:\Users\Charllot\Downloads\CP-Drone\CP-Drone)
+2025-10-01T19:59:32.187-03:00  INFO 26252 --- [CP-Drone] [main] b.c.f.CP_Drone.CpDroneApplicationTests   : No active profile set, falling back to 1 default profile: "default"
+2025-10-01T19:59:33.297-03:00  INFO 26252 --- [CP-Drone] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-01T19:59:33.375-03:00  INFO 26252 --- [CP-Drone] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 68 ms. Found 2 JPA repository interfaces.
+2025-10-01T19:59:33.833-03:00  INFO 26252 --- [CP-Drone] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-01T19:59:34.114-03:00  INFO 26252 --- [CP-Drone] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:blog_database user=SA
+2025-10-01T19:59:34.117-03:00  INFO 26252 --- [CP-Drone] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-01T19:59:34.208-03:00  INFO 26252 --- [CP-Drone] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-01T19:59:34.307-03:00  INFO 26252 --- [CP-Drone] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.26.Final
+2025-10-01T19:59:34.348-03:00  INFO 26252 --- [CP-Drone] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-01T19:59:34.653-03:00  INFO 26252 --- [CP-Drone] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-01T19:59:34.726-03:00  INFO 26252 --- [CP-Drone] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-01T19:59:35.604-03:00  INFO 26252 --- [CP-Drone] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-01T19:59:35.620-03:00 DEBUG 26252 --- [CP-Drone] [main] org.hibernate.SQL                        : 
+    drop table if exists drone cascade 
+2025-10-01T19:59:35.624-03:00 DEBUG 26252 --- [CP-Drone] [main] org.hibernate.SQL                        : 
+    drop table if exists mission cascade 
+2025-10-01T19:59:35.628-03:00 DEBUG 26252 --- [CP-Drone] [main] org.hibernate.SQL                        : 
+    create table drone (
+        capacity_battery integer not null,
+        id uuid not null,
+        status varchar(50) not null,
+        model varchar(100) not null,
+        primary key (id)
+    )
+2025-10-01T19:59:35.634-03:00 DEBUG 26252 --- [CP-Drone] [main] org.hibernate.SQL                        : 
+    create table mission (
+        date_agenda date not null,
+        usage_battery integer not null,
+        drone_id uuid not null,
+        id uuid not null,
+        localization varchar(50) not null,
+        description varchar(100) not null,
+        primary key (id)
+    )
+2025-10-01T19:59:35.635-03:00 DEBUG 26252 --- [CP-Drone] [main] org.hibernate.SQL                        : 
+    alter table if exists mission 
+       add constraint FKpecghq3rkd466r7rp8ew0g7b 
+       foreign key (drone_id) 
+       references drone
+2025-10-01T19:59:35.650-03:00  INFO 26252 --- [CP-Drone] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-01T19:59:36.595-03:00  WARN 26252 --- [CP-Drone] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-01T19:59:37.116-03:00  INFO 26252 --- [CP-Drone] [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/console'. Database available at 'jdbc:h2:mem:blog_database'
+2025-10-01T19:59:37.173-03:00  INFO 26252 --- [CP-Drone] [main] b.c.f.CP_Drone.CpDroneApplicationTests   : Started CpDroneApplicationTests in 5.362 seconds (process running for 6.726)
+2025-10-01T19:59:37.565-03:00  INFO 26252 --- [CP-Drone] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-01T19:59:37.567-03:00 DEBUG 26252 --- [CP-Drone] [SpringApplicationShutdownHook] org.hibernate.SQL                        : 
+    drop table if exists drone cascade 
+2025-10-01T19:59:37.568-03:00 DEBUG 26252 --- [CP-Drone] [SpringApplicationShutdownHook] org.hibernate.SQL                        : 
+    drop table if exists mission cascade 
+2025-10-01T19:59:37.572-03:00  INFO 26252 --- [CP-Drone] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-01T19:59:37.575-03:00  INFO 26252 --- [CP-Drone] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-01T19:59:51.018-03:00  INFO 29236 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : Starting CpDroneApplication using Java 24 with PID 29236 (C:\Users\Charllot\Downloads\CP-Drone\CP-Drone\target\classes started by Charllot in C:\Users\Charllot\Downloads\CP-Drone\CP-Drone)
+2025-10-01T19:59:51.020-03:00  INFO 29236 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-01T19:59:51.053-03:00  INFO 29236 --- [CP-Drone] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-10-01T19:59:51.053-03:00  INFO 29236 --- [CP-Drone] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-10-01T19:59:51.675-03:00  INFO 29236 --- [CP-Drone] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-01T19:59:51.729-03:00  INFO 29236 --- [CP-Drone] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44 ms. Found 2 JPA repository interfaces.
+2025-10-01T19:59:52.186-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-10-01T19:59:52.199-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-01T19:59:52.199-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.44]
+2025-10-01T19:59:52.247-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-01T19:59:52.247-03:00  INFO 29236 --- [CP-Drone] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1194 ms
+2025-10-01T19:59:52.370-03:00  INFO 29236 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-01T19:59:52.528-03:00  INFO 29236 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:blog_database user=SA
+2025-10-01T19:59:52.529-03:00  INFO 29236 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-01T19:59:52.562-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-01T19:59:52.600-03:00  INFO 29236 --- [CP-Drone] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.26.Final
+2025-10-01T19:59:52.626-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-01T19:59:52.855-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-01T19:59:52.917-03:00  INFO 29236 --- [CP-Drone] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-01T19:59:53.653-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-01T19:59:53.664-03:00 DEBUG 29236 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    drop table if exists drone cascade 
+2025-10-01T19:59:53.667-03:00 DEBUG 29236 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    drop table if exists mission cascade 
+2025-10-01T19:59:53.671-03:00 DEBUG 29236 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    create table drone (
+        capacity_battery integer not null,
+        id uuid not null,
+        status varchar(50) not null,
+        model varchar(100) not null,
+        primary key (id)
+    )
+2025-10-01T19:59:53.676-03:00 DEBUG 29236 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    create table mission (
+        date_agenda date not null,
+        usage_battery integer not null,
+        drone_id uuid not null,
+        id uuid not null,
+        localization varchar(50) not null,
+        description varchar(100) not null,
+        primary key (id)
+    )
+2025-10-01T19:59:53.677-03:00 DEBUG 29236 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    alter table if exists mission 
+       add constraint FKpecghq3rkd466r7rp8ew0g7b 
+       foreign key (drone_id) 
+       references drone
+2025-10-01T19:59:53.690-03:00  INFO 29236 --- [CP-Drone] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-01T19:59:54.073-03:00  WARN 29236 --- [CP-Drone] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-01T19:59:54.392-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/console'. Database available at 'jdbc:h2:mem:blog_database'
+2025-10-01T19:59:54.443-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-10-01T19:59:54.476-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-10-01T19:59:54.483-03:00  INFO 29236 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : Started CpDroneApplication in 3.846 seconds (process running for 4.516)
+2025-10-01T20:00:16.164-03:00  INFO 29236 --- [CP-Drone] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-01T20:00:16.164-03:00  INFO 29236 --- [CP-Drone] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-01T20:00:16.165-03:00  INFO 29236 --- [CP-Drone] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-01T20:00:17.030-03:00  INFO 29236 --- [CP-Drone] [http-nio-8080-exec-9] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 299 ms
+2025-10-01T20:02:03.038-03:00  WARN 29236 --- [CP-Drone] [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageConversionException: Type definition error: [simple type, class br.com.fiap.CP_Drone.representation.transferObjects.DroneDTO]]
+2025-10-01T20:03:12.505-03:00  INFO 29236 --- [CP-Drone] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 11 class path changes (0 additions, 11 deletions, 0 modifications)
+2025-10-01T20:03:12.508-03:00  INFO 29236 --- [CP-Drone] [Thread-5] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-01T20:03:12.515-03:00  INFO 29236 --- [CP-Drone] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-01T20:03:12.519-03:00  INFO 29236 --- [CP-Drone] [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-01T20:03:12.522-03:00 DEBUG 29236 --- [CP-Drone] [Thread-5] org.hibernate.SQL                        : 
+    drop table if exists drone cascade 
+2025-10-01T20:03:12.523-03:00 DEBUG 29236 --- [CP-Drone] [Thread-5] org.hibernate.SQL                        : 
+    drop table if exists mission cascade 
+2025-10-01T20:03:12.528-03:00  WARN 29236 --- [CP-Drone] [Thread-5] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2025-10-01T20:03:12.529-03:00  INFO 29236 --- [CP-Drone] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-01T20:03:12.531-03:00  INFO 29236 --- [CP-Drone] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-01T20:03:12.661-03:00  INFO 29236 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : Starting CpDroneApplication using Java 24 with PID 29236 (C:\Users\Charllot\Downloads\CP-Drone\CP-Drone\target\classes started by Charllot in C:\Users\Charllot\Downloads\CP-Drone\CP-Drone)
+2025-10-01T20:03:12.661-03:00  INFO 29236 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-01T20:03:12.892-03:00  INFO 29236 --- [CP-Drone] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-01T20:03:12.898-03:00  WARN 29236 --- [CP-Drone] [restartedMain] .RepositoryConfigurationExtensionSupport : JPA - Could not load type br.com.fiap.CP_Drone.domainmodel.repository.DroneRepository using class loader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@28378ba5
+
+java.lang.NoClassDefFoundError: br/com/fiap/CP_Drone/domainmodel/repository/DroneRepositoryCustom
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method) ~[na:na]
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:962) ~[na:na]
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:132) ~[na:na]
+	at java.base/java.net.URLClassLoader.defineClass(URLClassLoader.java:426) ~[na:na]
+	at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:339) ~[na:na]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.findClass(RestartClassLoader.java:136) ~[spring-boot-devtools-3.5.5.jar:3.5.5]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:118) ~[spring-boot-devtools-3.5.5.jar:3.5.5]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:490) ~[na:na]
+	at java.base/java.lang.Class.forName0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:543) ~[na:na]
+	at org.springframework.util.ClassUtils.forName(ClassUtils.java:321) ~[spring-core-6.2.10.jar:6.2.10]
+	at org.springframework.data.repository.config.RepositoryConfigurationExtensionSupport.loadRepositoryInterface(RepositoryConfigurationExtensionSupport.java:368) ~[spring-data-commons-3.5.3.jar:3.5.3]
+	at org.springframework.data.repository.config.RepositoryConfigurationExtensionSupport.getRepositoryConfigurations(RepositoryConfigurationExtensionSupport.java:85) ~[spring-data-commons-3.5.3.jar:3.5.3]
+	at org.springframework.data.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn(RepositoryConfigurationDelegate.java:170) ~[spring-data-commons-3.5.3.jar:3.5.3]
+	at org.springframework.boot.autoconfigure.data.AbstractRepositoryConfigurationSourceSupport.registerBeanDefinitions(AbstractRepositoryConfigurationSourceSupport.java:62) ~[spring-boot-autoconfigure-3.5.5.jar:3.5.5]
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.lambda$loadBeanDefinitionsFromRegistrars$1(ConfigurationClassBeanDefinitionReader.java:401) ~[spring-context-6.2.10.jar:6.2.10]
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:987) ~[na:na]
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsFromRegistrars(ConfigurationClassBeanDefinitionReader.java:400) ~[spring-context-6.2.10.jar:6.2.10]
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsForConfigurationClass(ConfigurationClassBeanDefinitionReader.java:148) ~[spring-context-6.2.10.jar:6.2.10]
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitions(ConfigurationClassBeanDefinitionReader.java:120) ~[spring-context-6.2.10.jar:6.2.10]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:430) ~[spring-context-6.2.10.jar:6.2.10]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:290) ~[spring-context-6.2.10.jar:6.2.10]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:349) ~[spring-context-6.2.10.jar:6.2.10]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:118) ~[spring-context-6.2.10.jar:6.2.10]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:791) ~[spring-context-6.2.10.jar:6.2.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:609) ~[spring-context-6.2.10.jar:6.2.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.5.5.jar:3.5.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.5.5.jar:3.5.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.5.5.jar:3.5.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.5.5.jar:3.5.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.5.5.jar:3.5.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.5.5.jar:3.5.5]
+	at br.com.fiap.CP_Drone.CpDroneApplication.main(CpDroneApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.5.5.jar:3.5.5]
+Caused by: java.lang.ClassNotFoundException: br.com.fiap.CP_Drone.domainmodel.repository.DroneRepositoryCustom
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:580) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:490) ~[na:na]
+	at java.base/java.lang.Class.forName0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:543) ~[na:na]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121) ~[spring-boot-devtools-3.5.5.jar:3.5.5]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:490) ~[na:na]
+	... 36 common frames omitted
+
+2025-10-01T20:03:12.908-03:00  WARN 29236 --- [CP-Drone] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Cannot parse br.com.fiap.CP_Drone.domainmodel.repository.DroneRepositoryCustom metadata
+2025-10-01T20:03:12.911-03:00  INFO 29236 --- [CP-Drone] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-10-01T20:03:12.930-03:00 ERROR 29236 --- [CP-Drone] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanDefinitionStoreException: Cannot parse br.com.fiap.CP_Drone.domainmodel.repository.DroneRepositoryCustom metadata
+	at org.springframework.data.repository.config.FragmentMetadata.getAnnotationMetadata(FragmentMetadata.java:78) ~[spring-data-commons-3.5.3.jar:3.5.3]
+	at org.springframework.data.repository.config.FragmentMetadata.isCandidate(FragmentMetadata.java:69) ~[spring-data-commons-3.5.3.jar:3.5.3]
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:196) ~[na:na]
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560) ~[na:na]
+	at java.base/java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:315) ~[na:na]
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:734) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560) ~[na:na]
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:727) ~[na:na]
+	at org.springframework.data.repository.config.RepositoryBeanDefinitionBuilder.registerRepositoryFragments(RepositoryBeanDefinitionBuilder.java:219) ~[spring-data-commons-3.5.3.jar:3.5.3]
+	at org.springframework.data.repository.config.RepositoryBeanDefinitionBuilder.build(RepositoryBeanDefinitionBuilder.java:144) ~[spring-data-commons-3.5.3.jar:3.5.3]
+	at org.springframework.data.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn(RepositoryConfigurationDelegate.java:181) ~[spring-data-commons-3.5.3.jar:3.5.3]
+	at org.springframework.boot.autoconfigure.data.AbstractRepositoryConfigurationSourceSupport.registerBeanDefinitions(AbstractRepositoryConfigurationSourceSupport.java:62) ~[spring-boot-autoconfigure-3.5.5.jar:3.5.5]
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.lambda$loadBeanDefinitionsFromRegistrars$1(ConfigurationClassBeanDefinitionReader.java:401) ~[spring-context-6.2.10.jar:6.2.10]
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:987) ~[na:na]
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsFromRegistrars(ConfigurationClassBeanDefinitionReader.java:400) ~[spring-context-6.2.10.jar:6.2.10]
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsForConfigurationClass(ConfigurationClassBeanDefinitionReader.java:148) ~[spring-context-6.2.10.jar:6.2.10]
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitions(ConfigurationClassBeanDefinitionReader.java:120) ~[spring-context-6.2.10.jar:6.2.10]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:430) ~[spring-context-6.2.10.jar:6.2.10]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:290) ~[spring-context-6.2.10.jar:6.2.10]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:349) ~[spring-context-6.2.10.jar:6.2.10]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:118) ~[spring-context-6.2.10.jar:6.2.10]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:791) ~[spring-context-6.2.10.jar:6.2.10]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:609) ~[spring-context-6.2.10.jar:6.2.10]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.5.5.jar:3.5.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.5.5.jar:3.5.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.5.5.jar:3.5.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.5.5.jar:3.5.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.5.5.jar:3.5.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.5.5.jar:3.5.5]
+	at br.com.fiap.CP_Drone.CpDroneApplication.main(CpDroneApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.5.5.jar:3.5.5]
+Caused by: java.io.FileNotFoundException: class path resource [br/com/fiap/CP_Drone/domainmodel/repository/DroneRepositoryCustom.class] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:215) ~[spring-core-6.2.10.jar:6.2.10]
+	at org.springframework.core.type.classreading.SimpleMetadataReader.getClassReader(SimpleMetadataReader.java:54) ~[spring-core-6.2.10.jar:6.2.10]
+	at org.springframework.core.type.classreading.SimpleMetadataReader.<init>(SimpleMetadataReader.java:48) ~[spring-core-6.2.10.jar:6.2.10]
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:103) ~[spring-core-6.2.10.jar:6.2.10]
+	at org.springframework.core.type.classreading.CachingMetadataReaderFactory.getMetadataReader(CachingMetadataReaderFactory.java:122) ~[spring-core-6.2.10.jar:6.2.10]
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:81) ~[spring-core-6.2.10.jar:6.2.10]
+	at org.springframework.data.repository.config.FragmentMetadata.getAnnotationMetadata(FragmentMetadata.java:76) ~[spring-data-commons-3.5.3.jar:3.5.3]
+	... 37 common frames omitted
+
+2025-10-01T20:03:15.809-03:00  INFO 29236 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : Starting CpDroneApplication using Java 24 with PID 29236 (C:\Users\Charllot\Downloads\CP-Drone\CP-Drone\target\classes started by Charllot in C:\Users\Charllot\Downloads\CP-Drone\CP-Drone)
+2025-10-01T20:03:15.809-03:00  INFO 29236 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-01T20:03:16.130-03:00  INFO 29236 --- [CP-Drone] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-01T20:03:16.142-03:00  INFO 29236 --- [CP-Drone] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 2 JPA repository interfaces.
+2025-10-01T20:03:16.222-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-10-01T20:03:16.224-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-01T20:03:16.224-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.44]
+2025-10-01T20:03:16.247-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-01T20:03:16.248-03:00  INFO 29236 --- [CP-Drone] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 436 ms
+2025-10-01T20:03:16.281-03:00  INFO 29236 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-10-01T20:03:16.283-03:00  INFO 29236 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn11: url=jdbc:h2:mem:blog_database user=SA
+2025-10-01T20:03:16.283-03:00  INFO 29236 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-10-01T20:03:16.286-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-01T20:03:16.288-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-01T20:03:16.295-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-01T20:03:16.297-03:00  INFO 29236 --- [CP-Drone] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-01T20:03:16.344-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-01T20:03:16.345-03:00 DEBUG 29236 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    drop table if exists drone cascade 
+2025-10-01T20:03:16.346-03:00 DEBUG 29236 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    drop table if exists mission cascade 
+2025-10-01T20:03:16.347-03:00 DEBUG 29236 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    create table drone (
+        capacity_battery integer not null,
+        id uuid not null,
+        status varchar(50) not null,
+        model varchar(100) not null,
+        primary key (id)
+    )
+2025-10-01T20:03:16.348-03:00 DEBUG 29236 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    create table mission (
+        date_agenda date not null,
+        usage_battery integer not null,
+        drone_id uuid not null,
+        id uuid not null,
+        localization varchar(50) not null,
+        description varchar(100) not null,
+        primary key (id)
+    )
+2025-10-01T20:03:16.349-03:00 DEBUG 29236 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    alter table if exists mission 
+       add constraint FKpecghq3rkd466r7rp8ew0g7b 
+       foreign key (drone_id) 
+       references drone
+2025-10-01T20:03:16.351-03:00  INFO 29236 --- [CP-Drone] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-01T20:03:16.444-03:00  WARN 29236 --- [CP-Drone] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-01T20:03:16.566-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/console'. Database available at 'jdbc:h2:mem:blog_database'
+2025-10-01T20:03:16.584-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-10-01T20:03:16.596-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-10-01T20:03:16.599-03:00  INFO 29236 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : Started CpDroneApplication in 0.816 seconds (process running for 206.631)
+2025-10-01T20:03:16.600-03:00  INFO 29236 --- [CP-Drone] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-10-01T20:03:17.995-03:00  INFO 29236 --- [CP-Drone] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2025-10-01T20:03:17.997-03:00  INFO 29236 --- [CP-Drone] [Thread-7] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-01T20:03:18.001-03:00  INFO 29236 --- [CP-Drone] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-01T20:03:18.003-03:00  INFO 29236 --- [CP-Drone] [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-01T20:03:18.003-03:00 DEBUG 29236 --- [CP-Drone] [Thread-7] org.hibernate.SQL                        : 
+    drop table if exists drone cascade 
+2025-10-01T20:03:18.004-03:00 DEBUG 29236 --- [CP-Drone] [Thread-7] org.hibernate.SQL                        : 
+    drop table if exists mission cascade 
+2025-10-01T20:03:18.004-03:00  WARN 29236 --- [CP-Drone] [Thread-7] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2025-10-01T20:03:18.005-03:00  INFO 29236 --- [CP-Drone] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-10-01T20:03:18.005-03:00  INFO 29236 --- [CP-Drone] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2025-10-01T20:03:18.081-03:00  INFO 29236 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : Starting CpDroneApplication using Java 24 with PID 29236 (C:\Users\Charllot\Downloads\CP-Drone\CP-Drone\target\classes started by Charllot in C:\Users\Charllot\Downloads\CP-Drone\CP-Drone)
+2025-10-01T20:03:18.081-03:00  INFO 29236 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-01T20:03:18.211-03:00  INFO 29236 --- [CP-Drone] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-01T20:03:18.225-03:00  INFO 29236 --- [CP-Drone] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 2 JPA repository interfaces.
+2025-10-01T20:03:18.300-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-10-01T20:03:18.300-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-01T20:03:18.301-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.44]
+2025-10-01T20:03:18.321-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-01T20:03:18.321-03:00  INFO 29236 --- [CP-Drone] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 238 ms
+2025-10-01T20:03:18.344-03:00  INFO 29236 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2025-10-01T20:03:18.347-03:00  INFO 29236 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection conn21: url=jdbc:h2:mem:blog_database user=SA
+2025-10-01T20:03:18.349-03:00  INFO 29236 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2025-10-01T20:03:18.351-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-01T20:03:18.353-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-01T20:03:18.359-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-01T20:03:18.359-03:00  INFO 29236 --- [CP-Drone] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-3)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-01T20:03:18.408-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-01T20:03:18.408-03:00 DEBUG 29236 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    drop table if exists drone cascade 
+2025-10-01T20:03:18.409-03:00 DEBUG 29236 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    drop table if exists mission cascade 
+2025-10-01T20:03:18.409-03:00 DEBUG 29236 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    create table drone (
+        capacity_battery integer not null,
+        id uuid not null,
+        status varchar(50) not null,
+        model varchar(100) not null,
+        primary key (id)
+    )
+2025-10-01T20:03:18.409-03:00 DEBUG 29236 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    create table mission (
+        date_agenda date not null,
+        usage_battery integer not null,
+        drone_id uuid not null,
+        id uuid not null,
+        localization varchar(50) not null,
+        description varchar(100) not null,
+        primary key (id)
+    )
+2025-10-01T20:03:18.410-03:00 DEBUG 29236 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    alter table if exists mission 
+       add constraint FKpecghq3rkd466r7rp8ew0g7b 
+       foreign key (drone_id) 
+       references drone
+2025-10-01T20:03:18.413-03:00  INFO 29236 --- [CP-Drone] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-01T20:03:18.484-03:00  WARN 29236 --- [CP-Drone] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-01T20:03:18.554-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/console'. Database available at 'jdbc:h2:mem:blog_database'
+2025-10-01T20:03:18.563-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-10-01T20:03:18.573-03:00  INFO 29236 --- [CP-Drone] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-10-01T20:03:18.575-03:00  INFO 29236 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : Started CpDroneApplication in 0.513 seconds (process running for 208.607)
+2025-10-01T20:03:18.576-03:00  INFO 29236 --- [CP-Drone] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-10-01T20:03:24.284-03:00  INFO 29236 --- [CP-Drone] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-01T20:03:24.286-03:00  INFO 29236 --- [CP-Drone] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-01T20:03:24.286-03:00  INFO 29236 --- [CP-Drone] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-10-01T20:03:24.295-03:00  WARN 29236 --- [CP-Drone] [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageConversionException: Type definition error: [simple type, class br.com.fiap.CP_Drone.presentation.transferObjects.DroneDTO]]
+2025-10-01T20:05:05.544-03:00  INFO 29236 --- [CP-Drone] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-01T20:05:05.550-03:00  INFO 29236 --- [CP-Drone] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-01T20:05:05.552-03:00  INFO 29236 --- [CP-Drone] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-01T20:05:05.553-03:00 DEBUG 29236 --- [CP-Drone] [SpringApplicationShutdownHook] org.hibernate.SQL                        : 
+    drop table if exists drone cascade 
+2025-10-01T20:05:05.555-03:00 DEBUG 29236 --- [CP-Drone] [SpringApplicationShutdownHook] org.hibernate.SQL                        : 
+    drop table if exists mission cascade 
+2025-10-01T20:05:05.555-03:00  WARN 29236 --- [CP-Drone] [SpringApplicationShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2025-10-01T20:05:05.557-03:00  INFO 29236 --- [CP-Drone] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2025-10-01T20:05:05.558-03:00  INFO 29236 --- [CP-Drone] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2025-10-01T20:05:08.695-03:00  INFO 23780 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : Starting CpDroneApplication using Java 24 with PID 23780 (C:\Users\Charllot\Downloads\CP-Drone\CP-Drone\target\classes started by Charllot in C:\Users\Charllot\Downloads\CP-Drone\CP-Drone)
+2025-10-01T20:05:08.697-03:00  INFO 23780 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-01T20:05:08.733-03:00  INFO 23780 --- [CP-Drone] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-10-01T20:05:08.733-03:00  INFO 23780 --- [CP-Drone] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-10-01T20:05:09.318-03:00  INFO 23780 --- [CP-Drone] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-01T20:05:09.375-03:00  INFO 23780 --- [CP-Drone] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 2 JPA repository interfaces.
+2025-10-01T20:05:09.810-03:00  INFO 23780 --- [CP-Drone] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-10-01T20:05:09.822-03:00  INFO 23780 --- [CP-Drone] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-01T20:05:09.822-03:00  INFO 23780 --- [CP-Drone] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.44]
+2025-10-01T20:05:09.864-03:00  INFO 23780 --- [CP-Drone] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-01T20:05:09.864-03:00  INFO 23780 --- [CP-Drone] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1131 ms
+2025-10-01T20:05:09.962-03:00  INFO 23780 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-01T20:05:10.121-03:00  INFO 23780 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:blog_database user=SA
+2025-10-01T20:05:10.123-03:00  INFO 23780 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-01T20:05:10.158-03:00  INFO 23780 --- [CP-Drone] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-01T20:05:10.197-03:00  INFO 23780 --- [CP-Drone] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.26.Final
+2025-10-01T20:05:10.224-03:00  INFO 23780 --- [CP-Drone] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-01T20:05:10.461-03:00  INFO 23780 --- [CP-Drone] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-01T20:05:10.522-03:00  INFO 23780 --- [CP-Drone] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-01T20:05:11.240-03:00  INFO 23780 --- [CP-Drone] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-01T20:05:11.254-03:00 DEBUG 23780 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    drop table if exists drone cascade 
+2025-10-01T20:05:11.257-03:00 DEBUG 23780 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    drop table if exists mission cascade 
+2025-10-01T20:05:11.261-03:00 DEBUG 23780 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    create table drone (
+        capacity_battery integer not null,
+        id uuid not null,
+        status varchar(50) not null,
+        model varchar(100) not null,
+        primary key (id)
+    )
+2025-10-01T20:05:11.266-03:00 DEBUG 23780 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    create table mission (
+        date_agenda date not null,
+        usage_battery integer not null,
+        drone_id uuid not null,
+        id uuid not null,
+        localization varchar(50) not null,
+        description varchar(100) not null,
+        primary key (id)
+    )
+2025-10-01T20:05:11.267-03:00 DEBUG 23780 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    alter table if exists mission 
+       add constraint FKpecghq3rkd466r7rp8ew0g7b 
+       foreign key (drone_id) 
+       references drone
+2025-10-01T20:05:11.280-03:00  INFO 23780 --- [CP-Drone] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-01T20:05:11.682-03:00  WARN 23780 --- [CP-Drone] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-01T20:05:11.984-03:00  INFO 23780 --- [CP-Drone] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/console'. Database available at 'jdbc:h2:mem:blog_database'
+2025-10-01T20:05:12.030-03:00  INFO 23780 --- [CP-Drone] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-10-01T20:05:12.061-03:00  INFO 23780 --- [CP-Drone] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-10-01T20:05:12.068-03:00  INFO 23780 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : Started CpDroneApplication in 3.73 seconds (process running for 4.519)
+2025-10-01T20:05:19.050-03:00  INFO 23780 --- [CP-Drone] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-01T20:05:19.050-03:00  INFO 23780 --- [CP-Drone] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-01T20:05:19.051-03:00  INFO 23780 --- [CP-Drone] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-01T20:05:19.159-03:00  WARN 23780 --- [CP-Drone] [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageConversionException: Type definition error: [simple type, class br.com.fiap.CP_Drone.presentation.transferObjects.DroneDTO]]
+2025-10-01T20:05:22.327-03:00  INFO 23780 --- [CP-Drone] [http-nio-8080-exec-5] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 929 ms
+2025-10-01T20:05:42.323-03:00  WARN 23780 --- [CP-Drone] [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageConversionException: Type definition error: [simple type, class br.com.fiap.CP_Drone.presentation.transferObjects.DroneDTO]]
+2025-10-01T20:06:50.530-03:00  INFO 23780 --- [CP-Drone] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-01T20:06:50.536-03:00  INFO 23780 --- [CP-Drone] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-01T20:06:50.540-03:00  INFO 23780 --- [CP-Drone] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-01T20:06:50.540-03:00 DEBUG 23780 --- [CP-Drone] [SpringApplicationShutdownHook] org.hibernate.SQL                        : 
+    drop table if exists drone cascade 
+2025-10-01T20:06:50.543-03:00 DEBUG 23780 --- [CP-Drone] [SpringApplicationShutdownHook] org.hibernate.SQL                        : 
+    drop table if exists mission cascade 
+2025-10-01T20:06:50.550-03:00  WARN 23780 --- [CP-Drone] [SpringApplicationShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2025-10-01T20:06:50.551-03:00  INFO 23780 --- [CP-Drone] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-01T20:06:50.555-03:00  INFO 23780 --- [CP-Drone] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-01T20:06:54.201-03:00  INFO 32500 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : Starting CpDroneApplication using Java 24 with PID 32500 (C:\Users\Charllot\Downloads\CP-Drone\CP-Drone\target\classes started by Charllot in C:\Users\Charllot\Downloads\CP-Drone\CP-Drone)
+2025-10-01T20:06:54.202-03:00  INFO 32500 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-01T20:06:54.241-03:00  INFO 32500 --- [CP-Drone] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-10-01T20:06:54.242-03:00  INFO 32500 --- [CP-Drone] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-10-01T20:06:55.145-03:00  INFO 32500 --- [CP-Drone] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-01T20:06:55.204-03:00  INFO 32500 --- [CP-Drone] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 49 ms. Found 2 JPA repository interfaces.
+2025-10-01T20:06:55.709-03:00  INFO 32500 --- [CP-Drone] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-10-01T20:06:55.722-03:00  INFO 32500 --- [CP-Drone] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-01T20:06:55.722-03:00  INFO 32500 --- [CP-Drone] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.44]
+2025-10-01T20:06:55.762-03:00  INFO 32500 --- [CP-Drone] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-01T20:06:55.762-03:00  INFO 32500 --- [CP-Drone] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1520 ms
+2025-10-01T20:06:55.894-03:00  INFO 32500 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-01T20:06:56.072-03:00  INFO 32500 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:blog_database user=SA
+2025-10-01T20:06:56.073-03:00  INFO 32500 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-01T20:06:56.110-03:00  INFO 32500 --- [CP-Drone] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-01T20:06:56.149-03:00  INFO 32500 --- [CP-Drone] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.26.Final
+2025-10-01T20:06:56.176-03:00  INFO 32500 --- [CP-Drone] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-01T20:06:56.450-03:00  INFO 32500 --- [CP-Drone] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-01T20:06:56.517-03:00  INFO 32500 --- [CP-Drone] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-01T20:06:57.362-03:00  INFO 32500 --- [CP-Drone] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-01T20:06:57.376-03:00 DEBUG 32500 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    drop table if exists drone cascade 
+2025-10-01T20:06:57.380-03:00 DEBUG 32500 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    drop table if exists mission cascade 
+2025-10-01T20:06:57.387-03:00 DEBUG 32500 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    create table drone (
+        capacity_battery integer not null,
+        id uuid not null,
+        status varchar(50) not null,
+        model varchar(100) not null,
+        primary key (id)
+    )
+2025-10-01T20:06:57.393-03:00 DEBUG 32500 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    create table mission (
+        date_agenda date not null,
+        usage_battery integer not null,
+        drone_id uuid not null,
+        id uuid not null,
+        localization varchar(50) not null,
+        description varchar(100) not null,
+        primary key (id)
+    )
+2025-10-01T20:06:57.395-03:00 DEBUG 32500 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    alter table if exists mission 
+       add constraint FKpecghq3rkd466r7rp8ew0g7b 
+       foreign key (drone_id) 
+       references drone
+2025-10-01T20:06:57.409-03:00  INFO 32500 --- [CP-Drone] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-01T20:06:57.820-03:00  WARN 32500 --- [CP-Drone] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-01T20:06:58.132-03:00  INFO 32500 --- [CP-Drone] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/console'. Database available at 'jdbc:h2:mem:blog_database'
+2025-10-01T20:06:58.178-03:00  INFO 32500 --- [CP-Drone] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-10-01T20:06:58.210-03:00  INFO 32500 --- [CP-Drone] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-10-01T20:06:58.219-03:00  INFO 32500 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : Started CpDroneApplication in 4.368 seconds (process running for 4.964)
+2025-10-01T20:07:09.296-03:00  INFO 32500 --- [CP-Drone] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-01T20:07:09.297-03:00  INFO 32500 --- [CP-Drone] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-01T20:07:09.298-03:00  INFO 32500 --- [CP-Drone] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-10-01T20:07:10.420-03:00  INFO 32500 --- [CP-Drone] [http-nio-8080-exec-4] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 517 ms
+2025-10-01T20:07:27.153-03:00 TRACE 32500 --- [CP-Drone] [http-nio-8080-exec-5] o.s.t.i.TransactionInterceptor           : Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2025-10-01T20:07:27.173-03:00 TRACE 32500 --- [CP-Drone] [http-nio-8080-exec-5] o.s.t.i.TransactionInterceptor           : Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2025-10-01T20:07:27.189-03:00 DEBUG 32500 --- [CP-Drone] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    insert 
+    into
+        drone
+        (capacity_battery, model, status, id) 
+    values
+        (?, ?, ?, ?)
+2025-10-01T20:08:38.375-03:00  INFO 32500 --- [CP-Drone] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-01T20:08:38.382-03:00  INFO 32500 --- [CP-Drone] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-01T20:08:38.388-03:00  INFO 32500 --- [CP-Drone] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-01T20:08:38.390-03:00 DEBUG 32500 --- [CP-Drone] [SpringApplicationShutdownHook] org.hibernate.SQL                        : 
+    drop table if exists drone cascade 
+2025-10-01T20:08:38.391-03:00 DEBUG 32500 --- [CP-Drone] [SpringApplicationShutdownHook] org.hibernate.SQL                        : 
+    drop table if exists mission cascade 
+2025-10-01T20:08:38.395-03:00  WARN 32500 --- [CP-Drone] [SpringApplicationShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2025-10-01T20:08:38.396-03:00  INFO 32500 --- [CP-Drone] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-01T20:08:38.398-03:00  INFO 32500 --- [CP-Drone] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-01T20:08:41.985-03:00  INFO 31172 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : Starting CpDroneApplication using Java 24 with PID 31172 (C:\Users\Charllot\Downloads\CP-Drone\CP-Drone\target\classes started by Charllot in C:\Users\Charllot\Downloads\CP-Drone\CP-Drone)
+2025-10-01T20:08:41.987-03:00  INFO 31172 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-01T20:08:42.023-03:00  INFO 31172 --- [CP-Drone] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-10-01T20:08:42.023-03:00  INFO 31172 --- [CP-Drone] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-10-01T20:08:42.631-03:00  INFO 31172 --- [CP-Drone] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-01T20:08:42.691-03:00  INFO 31172 --- [CP-Drone] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 50 ms. Found 2 JPA repository interfaces.
+2025-10-01T20:08:43.126-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-10-01T20:08:43.138-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-01T20:08:43.138-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.44]
+2025-10-01T20:08:43.183-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-01T20:08:43.184-03:00  INFO 31172 --- [CP-Drone] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1161 ms
+2025-10-01T20:08:43.290-03:00  INFO 31172 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-01T20:08:43.463-03:00  INFO 31172 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:blog_database user=SA
+2025-10-01T20:08:43.465-03:00  INFO 31172 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-01T20:08:43.502-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-01T20:08:43.541-03:00  INFO 31172 --- [CP-Drone] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.26.Final
+2025-10-01T20:08:43.569-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-01T20:08:43.802-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-01T20:08:43.863-03:00  INFO 31172 --- [CP-Drone] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-01T20:08:44.587-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-01T20:08:44.599-03:00 DEBUG 31172 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    drop table if exists drone cascade 
+2025-10-01T20:08:44.602-03:00 DEBUG 31172 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    drop table if exists mission cascade 
+2025-10-01T20:08:44.605-03:00 DEBUG 31172 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    create table drone (
+        capacity_battery integer not null,
+        id uuid not null,
+        status varchar(50) not null,
+        model varchar(100) not null,
+        primary key (id)
+    )
+2025-10-01T20:08:44.611-03:00 DEBUG 31172 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    create table mission (
+        date_agenda date not null,
+        usage_battery integer not null,
+        drone_id uuid not null,
+        id uuid not null,
+        localization varchar(50) not null,
+        description varchar(100) not null,
+        primary key (id)
+    )
+2025-10-01T20:08:44.612-03:00 DEBUG 31172 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    alter table if exists mission 
+       add constraint FKpecghq3rkd466r7rp8ew0g7b 
+       foreign key (drone_id) 
+       references drone
+2025-10-01T20:08:44.625-03:00  INFO 31172 --- [CP-Drone] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-01T20:08:45.010-03:00  WARN 31172 --- [CP-Drone] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-01T20:08:45.305-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/console'. Database available at 'jdbc:h2:mem:blog_database'
+2025-10-01T20:08:45.352-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-10-01T20:08:45.389-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-10-01T20:08:45.396-03:00  INFO 31172 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : Started CpDroneApplication in 3.768 seconds (process running for 4.348)
+2025-10-01T20:11:14.009-03:00  INFO 31172 --- [CP-Drone] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-01T20:11:14.009-03:00  INFO 31172 --- [CP-Drone] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-01T20:11:14.011-03:00  INFO 31172 --- [CP-Drone] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-10-01T20:11:14.117-03:00 TRACE 31172 --- [CP-Drone] [http-nio-8080-exec-1] o.s.t.i.TransactionInterceptor           : Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.existsById]
+2025-10-01T20:11:14.444-03:00 DEBUG 31172 --- [CP-Drone] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        drone d1_0 
+    where
+        d1_0.id=?
+2025-10-01T20:11:14.476-03:00 TRACE 31172 --- [CP-Drone] [http-nio-8080-exec-1] o.s.t.i.TransactionInterceptor           : Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.existsById]
+2025-10-01T20:11:30.009-03:00 TRACE 31172 --- [CP-Drone] [http-nio-8080-exec-3] o.s.t.i.TransactionInterceptor           : Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2025-10-01T20:11:30.032-03:00 TRACE 31172 --- [CP-Drone] [http-nio-8080-exec-3] o.s.t.i.TransactionInterceptor           : Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2025-10-01T20:11:30.048-03:00 DEBUG 31172 --- [CP-Drone] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    insert 
+    into
+        drone
+        (capacity_battery, model, status, id) 
+    values
+        (?, ?, ?, ?)
+2025-10-01T20:11:36.858-03:00 TRACE 31172 --- [CP-Drone] [http-nio-8080-exec-4] o.s.t.i.TransactionInterceptor           : Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.existsById]
+2025-10-01T20:11:36.859-03:00 DEBUG 31172 --- [CP-Drone] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        drone d1_0 
+    where
+        d1_0.id=?
+2025-10-01T20:11:36.860-03:00 TRACE 31172 --- [CP-Drone] [http-nio-8080-exec-4] o.s.t.i.TransactionInterceptor           : Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.existsById]
+2025-10-01T20:12:06.528-03:00 TRACE 31172 --- [CP-Drone] [http-nio-8080-exec-7] o.s.t.i.TransactionInterceptor           : Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.existsById]
+2025-10-01T20:12:06.529-03:00 DEBUG 31172 --- [CP-Drone] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        drone d1_0 
+    where
+        d1_0.id=?
+2025-10-01T20:12:06.530-03:00 TRACE 31172 --- [CP-Drone] [http-nio-8080-exec-7] o.s.t.i.TransactionInterceptor           : Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.existsById]
+2025-10-01T20:12:06.530-03:00 TRACE 31172 --- [CP-Drone] [http-nio-8080-exec-7] o.s.t.i.TransactionInterceptor           : Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2025-10-01T20:12:06.537-03:00 DEBUG 31172 --- [CP-Drone] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        d1_0.id,
+        d1_0.capacity_battery,
+        d1_0.model,
+        d1_0.status 
+    from
+        drone d1_0 
+    where
+        d1_0.id=?
+2025-10-01T20:12:06.559-03:00 TRACE 31172 --- [CP-Drone] [http-nio-8080-exec-7] o.s.t.i.TransactionInterceptor           : Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2025-10-01T20:12:06.564-03:00 DEBUG 31172 --- [CP-Drone] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    update
+        drone 
+    set
+        capacity_battery=?,
+        model=?,
+        status=? 
+    where
+        id=?
+2025-10-01T20:12:21.513-03:00 TRACE 31172 --- [CP-Drone] [http-nio-8080-exec-3] o.s.t.i.TransactionInterceptor           : Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById]
+2025-10-01T20:12:21.521-03:00 DEBUG 31172 --- [CP-Drone] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        d1_0.id,
+        d1_0.capacity_battery,
+        d1_0.model,
+        d1_0.status 
+    from
+        drone d1_0 
+    where
+        d1_0.id=?
+2025-10-01T20:12:21.523-03:00 TRACE 31172 --- [CP-Drone] [http-nio-8080-exec-3] o.s.t.i.TransactionInterceptor           : Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById]
+2025-10-01T20:12:45.961-03:00 TRACE 31172 --- [CP-Drone] [http-nio-8080-exec-8] o.s.t.i.TransactionInterceptor           : Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll]
+2025-10-01T20:12:45.976-03:00 DEBUG 31172 --- [CP-Drone] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        d1_0.id,
+        d1_0.capacity_battery,
+        d1_0.model,
+        d1_0.status 
+    from
+        drone d1_0
+2025-10-01T20:12:45.978-03:00 TRACE 31172 --- [CP-Drone] [http-nio-8080-exec-8] o.s.t.i.TransactionInterceptor           : Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll]
+2025-10-01T20:13:06.769-03:00  WARN 31172 --- [CP-Drone] [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.IllegalArgumentException: Name for argument of type [java.lang.String] not specified, and parameter name information not available via reflection. Ensure that the compiler uses the '-parameters' flag.]
+2025-10-01T20:14:35.797-03:00  INFO 31172 --- [CP-Drone] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2025-10-01T20:14:35.802-03:00  INFO 31172 --- [CP-Drone] [Thread-5] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-01T20:14:35.810-03:00  INFO 31172 --- [CP-Drone] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-01T20:14:35.819-03:00  INFO 31172 --- [CP-Drone] [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-01T20:14:35.821-03:00 DEBUG 31172 --- [CP-Drone] [Thread-5] org.hibernate.SQL                        : 
+    drop table if exists drone cascade 
+2025-10-01T20:14:35.823-03:00 DEBUG 31172 --- [CP-Drone] [Thread-5] org.hibernate.SQL                        : 
+    drop table if exists mission cascade 
+2025-10-01T20:14:35.831-03:00  WARN 31172 --- [CP-Drone] [Thread-5] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2025-10-01T20:14:35.831-03:00  INFO 31172 --- [CP-Drone] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-01T20:14:35.833-03:00  INFO 31172 --- [CP-Drone] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-01T20:14:36.060-03:00  INFO 31172 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : Starting CpDroneApplication using Java 24 with PID 31172 (C:\Users\Charllot\Downloads\CP-Drone\CP-Drone\target\classes started by Charllot in C:\Users\Charllot\Downloads\CP-Drone\CP-Drone)
+2025-10-01T20:14:36.060-03:00  INFO 31172 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-01T20:14:36.474-03:00  INFO 31172 --- [CP-Drone] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-01T20:14:36.570-03:00  INFO 31172 --- [CP-Drone] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 95 ms. Found 2 JPA repository interfaces.
+2025-10-01T20:14:36.778-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-10-01T20:14:36.782-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-01T20:14:36.783-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.44]
+2025-10-01T20:14:36.831-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-01T20:14:36.832-03:00  INFO 31172 --- [CP-Drone] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 769 ms
+2025-10-01T20:14:36.885-03:00  INFO 31172 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-10-01T20:14:36.887-03:00  INFO 31172 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn11: url=jdbc:h2:mem:blog_database user=SA
+2025-10-01T20:14:36.888-03:00  INFO 31172 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-10-01T20:14:36.891-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-01T20:14:36.893-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-01T20:14:36.902-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-01T20:14:36.905-03:00  INFO 31172 --- [CP-Drone] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-01T20:14:36.975-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-01T20:14:36.975-03:00 DEBUG 31172 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    drop table if exists drone cascade 
+2025-10-01T20:14:36.975-03:00 DEBUG 31172 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    drop table if exists mission cascade 
+2025-10-01T20:14:36.976-03:00 DEBUG 31172 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    create table drone (
+        capacity_battery integer not null,
+        id uuid not null,
+        status varchar(50) not null,
+        model varchar(100) not null,
+        primary key (id)
+    )
+2025-10-01T20:14:36.977-03:00 DEBUG 31172 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    create table mission (
+        date_agenda date not null,
+        usage_battery integer not null,
+        drone_id uuid not null,
+        id uuid not null,
+        localization varchar(50) not null,
+        description varchar(100) not null,
+        primary key (id)
+    )
+2025-10-01T20:14:36.978-03:00 DEBUG 31172 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    alter table if exists mission 
+       add constraint FKpecghq3rkd466r7rp8ew0g7b 
+       foreign key (drone_id) 
+       references drone
+2025-10-01T20:14:36.983-03:00  INFO 31172 --- [CP-Drone] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-01T20:14:37.120-03:00  WARN 31172 --- [CP-Drone] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-01T20:14:37.319-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/console'. Database available at 'jdbc:h2:mem:blog_database'
+2025-10-01T20:14:37.344-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-10-01T20:14:37.362-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-10-01T20:14:37.367-03:00  INFO 31172 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : Started CpDroneApplication in 1.375 seconds (process running for 356.32)
+2025-10-01T20:14:37.372-03:00  INFO 31172 --- [CP-Drone] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-10-01T20:14:38.758-03:00  INFO 31172 --- [CP-Drone] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2025-10-01T20:14:38.759-03:00  INFO 31172 --- [CP-Drone] [Thread-7] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-01T20:14:38.764-03:00  INFO 31172 --- [CP-Drone] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-01T20:14:38.765-03:00  INFO 31172 --- [CP-Drone] [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-01T20:14:38.765-03:00 DEBUG 31172 --- [CP-Drone] [Thread-7] org.hibernate.SQL                        : 
+    drop table if exists drone cascade 
+2025-10-01T20:14:38.767-03:00 DEBUG 31172 --- [CP-Drone] [Thread-7] org.hibernate.SQL                        : 
+    drop table if exists mission cascade 
+2025-10-01T20:14:38.767-03:00  WARN 31172 --- [CP-Drone] [Thread-7] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2025-10-01T20:14:38.768-03:00  INFO 31172 --- [CP-Drone] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-10-01T20:14:38.768-03:00  INFO 31172 --- [CP-Drone] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2025-10-01T20:14:38.828-03:00  INFO 31172 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : Starting CpDroneApplication using Java 24 with PID 31172 (C:\Users\Charllot\Downloads\CP-Drone\CP-Drone\target\classes started by Charllot in C:\Users\Charllot\Downloads\CP-Drone\CP-Drone)
+2025-10-01T20:14:38.829-03:00  INFO 31172 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-01T20:14:38.970-03:00  INFO 31172 --- [CP-Drone] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-01T20:14:38.996-03:00  INFO 31172 --- [CP-Drone] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25 ms. Found 2 JPA repository interfaces.
+2025-10-01T20:14:39.071-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-10-01T20:14:39.072-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-01T20:14:39.072-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.44]
+2025-10-01T20:14:39.096-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-01T20:14:39.097-03:00  INFO 31172 --- [CP-Drone] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 267 ms
+2025-10-01T20:14:39.124-03:00  INFO 31172 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2025-10-01T20:14:39.125-03:00  INFO 31172 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection conn21: url=jdbc:h2:mem:blog_database user=SA
+2025-10-01T20:14:39.126-03:00  INFO 31172 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2025-10-01T20:14:39.126-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-01T20:14:39.129-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-01T20:14:39.134-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-01T20:14:39.135-03:00  INFO 31172 --- [CP-Drone] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-3)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-01T20:14:39.171-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-01T20:14:39.171-03:00 DEBUG 31172 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    drop table if exists drone cascade 
+2025-10-01T20:14:39.171-03:00 DEBUG 31172 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    drop table if exists mission cascade 
+2025-10-01T20:14:39.172-03:00 DEBUG 31172 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    create table drone (
+        capacity_battery integer not null,
+        id uuid not null,
+        status varchar(50) not null,
+        model varchar(100) not null,
+        primary key (id)
+    )
+2025-10-01T20:14:39.173-03:00 DEBUG 31172 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    create table mission (
+        date_agenda date not null,
+        usage_battery integer not null,
+        drone_id uuid not null,
+        id uuid not null,
+        localization varchar(50) not null,
+        description varchar(100) not null,
+        primary key (id)
+    )
+2025-10-01T20:14:39.173-03:00 DEBUG 31172 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    alter table if exists mission 
+       add constraint FKpecghq3rkd466r7rp8ew0g7b 
+       foreign key (drone_id) 
+       references drone
+2025-10-01T20:14:39.175-03:00  INFO 31172 --- [CP-Drone] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-01T20:14:39.244-03:00  WARN 31172 --- [CP-Drone] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-01T20:14:39.319-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/console'. Database available at 'jdbc:h2:mem:blog_database'
+2025-10-01T20:14:39.329-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-10-01T20:14:39.337-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-10-01T20:14:39.339-03:00  INFO 31172 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : Started CpDroneApplication in 0.53 seconds (process running for 358.292)
+2025-10-01T20:14:39.340-03:00  INFO 31172 --- [CP-Drone] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-10-01T20:24:27.944-03:00  INFO 31172 --- [CP-Drone] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-01T20:24:27.944-03:00  INFO 31172 --- [CP-Drone] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-01T20:24:27.944-03:00  INFO 31172 --- [CP-Drone] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-10-01T20:24:27.993-03:00 TRACE 31172 --- [CP-Drone] [http-nio-8080-exec-1] o.s.t.i.TransactionInterceptor           : Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2025-10-01T20:24:27.993-03:00 TRACE 31172 --- [CP-Drone] [http-nio-8080-exec-1] o.s.t.i.TransactionInterceptor           : Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2025-10-01T20:24:27.995-03:00 DEBUG 31172 --- [CP-Drone] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    insert 
+    into
+        mission
+        (date_agenda, description, drone_id, localization, usage_battery, id) 
+    values
+        (?, ?, ?, ?, ?, ?)
+2025-10-01T20:24:27.998-03:00  WARN 31172 --- [CP-Drone] [http-nio-8080-exec-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 23506, SQLState: 23506
+2025-10-01T20:24:27.998-03:00 ERROR 31172 --- [CP-Drone] [http-nio-8080-exec-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : Referential integrity constraint violation: "FKPECGHQ3RKD466R7RP8EW0G7B: PUBLIC.MISSION FOREIGN KEY(DRONE_ID) REFERENCES PUBLIC.DRONE(ID) (UUID '7a60a521-3699-4c48-8f7f-fe5c0bca5cc3')"; SQL statement:
+insert into mission (date_agenda,description,drone_id,localization,usage_battery,id) values (?,?,?,?,?,?) [23506-232]
+2025-10-01T20:24:28.009-03:00  WARN 31172 --- [CP-Drone] [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.dao.DataIntegrityViolationException: could not execute statement [Referential integrity constraint violation: "FKPECGHQ3RKD466R7RP8EW0G7B: PUBLIC.MISSION FOREIGN KEY(DRONE_ID) REFERENCES PUBLIC.DRONE(ID) (UUID '7a60a521-3699-4c48-8f7f-fe5c0bca5cc3')"; SQL statement:<EOL>insert into mission (date_agenda,description,drone_id,localization,usage_battery,id) values (?,?,?,?,?,?) [23506-232]] [insert into mission (date_agenda,description,drone_id,localization,usage_battery,id) values (?,?,?,?,?,?)]; SQL [insert into mission (date_agenda,description,drone_id,localization,usage_battery,id) values (?,?,?,?,?,?)]; constraint [KPECGHQ3RKD466R7RP8EW0G7B]]
+2025-10-01T20:26:56.426-03:00 TRACE 31172 --- [CP-Drone] [http-nio-8080-exec-10] o.s.t.i.TransactionInterceptor           : Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2025-10-01T20:26:56.427-03:00 TRACE 31172 --- [CP-Drone] [http-nio-8080-exec-10] o.s.t.i.TransactionInterceptor           : Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2025-10-01T20:26:56.427-03:00 DEBUG 31172 --- [CP-Drone] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    insert 
+    into
+        drone
+        (capacity_battery, model, status, id) 
+    values
+        (?, ?, ?, ?)
+2025-10-01T20:27:09.164-03:00 TRACE 31172 --- [CP-Drone] [http-nio-8080-exec-1] o.s.t.i.TransactionInterceptor           : Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2025-10-01T20:27:09.165-03:00 TRACE 31172 --- [CP-Drone] [http-nio-8080-exec-1] o.s.t.i.TransactionInterceptor           : Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2025-10-01T20:27:09.165-03:00 DEBUG 31172 --- [CP-Drone] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    insert 
+    into
+        mission
+        (date_agenda, description, drone_id, localization, usage_battery, id) 
+    values
+        (?, ?, ?, ?, ?, ?)
+2025-10-01T20:27:32.614-03:00 TRACE 31172 --- [CP-Drone] [http-nio-8080-exec-7] o.s.t.i.TransactionInterceptor           : Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById]
+2025-10-01T20:27:32.616-03:00 DEBUG 31172 --- [CP-Drone] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        m1_0.id,
+        m1_0.date_agenda,
+        m1_0.description,
+        m1_0.drone_id,
+        di1_0.id,
+        di1_0.capacity_battery,
+        di1_0.model,
+        di1_0.status,
+        m1_0.localization,
+        m1_0.usage_battery 
+    from
+        mission m1_0 
+    join
+        drone di1_0 
+            on di1_0.id=m1_0.drone_id 
+    where
+        m1_0.id=?
+2025-10-01T20:27:32.621-03:00 TRACE 31172 --- [CP-Drone] [http-nio-8080-exec-7] o.s.t.i.TransactionInterceptor           : Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById]
+2025-10-01T20:27:43.250-03:00  WARN 31172 --- [CP-Drone] [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.IllegalArgumentException: Name for argument of type [java.util.UUID] not specified, and parameter name information not available via reflection. Ensure that the compiler uses the '-parameters' flag.]
+2025-10-01T20:29:33.185-03:00  INFO 31172 --- [CP-Drone] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2025-10-01T20:29:33.187-03:00  INFO 31172 --- [CP-Drone] [Thread-12] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-01T20:29:33.192-03:00  INFO 31172 --- [CP-Drone] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-01T20:29:33.193-03:00  INFO 31172 --- [CP-Drone] [Thread-12] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-01T20:29:33.194-03:00 DEBUG 31172 --- [CP-Drone] [Thread-12] org.hibernate.SQL                        : 
+    drop table if exists drone cascade 
+2025-10-01T20:29:33.194-03:00 DEBUG 31172 --- [CP-Drone] [Thread-12] org.hibernate.SQL                        : 
+    drop table if exists mission cascade 
+2025-10-01T20:29:33.195-03:00  WARN 31172 --- [CP-Drone] [Thread-12] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2025-10-01T20:29:33.195-03:00  INFO 31172 --- [CP-Drone] [Thread-12] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2025-10-01T20:29:33.195-03:00  INFO 31172 --- [CP-Drone] [Thread-12] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2025-10-01T20:29:33.260-03:00  INFO 31172 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : Starting CpDroneApplication using Java 24 with PID 31172 (C:\Users\Charllot\Downloads\CP-Drone\CP-Drone\target\classes started by Charllot in C:\Users\Charllot\Downloads\CP-Drone\CP-Drone)
+2025-10-01T20:29:33.260-03:00  INFO 31172 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-01T20:29:33.421-03:00  INFO 31172 --- [CP-Drone] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-01T20:29:33.439-03:00  INFO 31172 --- [CP-Drone] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 2 JPA repository interfaces.
+2025-10-01T20:29:33.542-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-10-01T20:29:33.545-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-01T20:29:33.545-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.44]
+2025-10-01T20:29:33.571-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-01T20:29:33.571-03:00  INFO 31172 --- [CP-Drone] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 309 ms
+2025-10-01T20:29:33.610-03:00  INFO 31172 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2025-10-01T20:29:33.612-03:00  INFO 31172 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection conn32: url=jdbc:h2:mem:blog_database user=SA
+2025-10-01T20:29:33.612-03:00  INFO 31172 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2025-10-01T20:29:33.617-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-01T20:29:33.620-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-01T20:29:33.629-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-01T20:29:33.631-03:00  INFO 31172 --- [CP-Drone] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-4)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-01T20:29:33.727-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-01T20:29:33.729-03:00 DEBUG 31172 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    drop table if exists drone cascade 
+2025-10-01T20:29:33.730-03:00 DEBUG 31172 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    drop table if exists mission cascade 
+2025-10-01T20:29:33.730-03:00 DEBUG 31172 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    create table drone (
+        capacity_battery integer not null,
+        id uuid not null,
+        status varchar(50) not null,
+        model varchar(100) not null,
+        primary key (id)
+    )
+2025-10-01T20:29:33.732-03:00 DEBUG 31172 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    create table mission (
+        date_agenda date not null,
+        usage_battery integer not null,
+        drone_id uuid not null,
+        id uuid not null,
+        localization varchar(50) not null,
+        description varchar(100) not null,
+        primary key (id)
+    )
+2025-10-01T20:29:33.732-03:00 DEBUG 31172 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    alter table if exists mission 
+       add constraint FKpecghq3rkd466r7rp8ew0g7b 
+       foreign key (drone_id) 
+       references drone
+2025-10-01T20:29:33.734-03:00  INFO 31172 --- [CP-Drone] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-01T20:29:33.872-03:00  WARN 31172 --- [CP-Drone] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-01T20:29:34.047-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/console'. Database available at 'jdbc:h2:mem:blog_database'
+2025-10-01T20:29:34.061-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-10-01T20:29:34.072-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-10-01T20:29:34.075-03:00  INFO 31172 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : Started CpDroneApplication in 0.836 seconds (process running for 1253.028)
+2025-10-01T20:29:34.075-03:00  INFO 31172 --- [CP-Drone] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-10-01T20:29:35.476-03:00  INFO 31172 --- [CP-Drone] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2025-10-01T20:29:35.477-03:00  INFO 31172 --- [CP-Drone] [Thread-16] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-01T20:29:35.482-03:00  INFO 31172 --- [CP-Drone] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-01T20:29:35.483-03:00  INFO 31172 --- [CP-Drone] [Thread-16] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-01T20:29:35.483-03:00 DEBUG 31172 --- [CP-Drone] [Thread-16] org.hibernate.SQL                        : 
+    drop table if exists drone cascade 
+2025-10-01T20:29:35.485-03:00 DEBUG 31172 --- [CP-Drone] [Thread-16] org.hibernate.SQL                        : 
+    drop table if exists mission cascade 
+2025-10-01T20:29:35.485-03:00  WARN 31172 --- [CP-Drone] [Thread-16] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2025-10-01T20:29:35.485-03:00  INFO 31172 --- [CP-Drone] [Thread-16] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2025-10-01T20:29:35.487-03:00  INFO 31172 --- [CP-Drone] [Thread-16] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2025-10-01T20:29:35.541-03:00  INFO 31172 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : Starting CpDroneApplication using Java 24 with PID 31172 (C:\Users\Charllot\Downloads\CP-Drone\CP-Drone\target\classes started by Charllot in C:\Users\Charllot\Downloads\CP-Drone\CP-Drone)
+2025-10-01T20:29:35.542-03:00  INFO 31172 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-01T20:29:35.673-03:00  INFO 31172 --- [CP-Drone] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-01T20:29:35.688-03:00  INFO 31172 --- [CP-Drone] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 2 JPA repository interfaces.
+2025-10-01T20:29:35.750-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-10-01T20:29:35.750-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-01T20:29:35.750-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.44]
+2025-10-01T20:29:35.770-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-01T20:29:35.770-03:00  INFO 31172 --- [CP-Drone] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 228 ms
+2025-10-01T20:29:35.796-03:00  INFO 31172 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2025-10-01T20:29:35.797-03:00  INFO 31172 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Added connection conn42: url=jdbc:h2:mem:blog_database user=SA
+2025-10-01T20:29:35.797-03:00  INFO 31172 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2025-10-01T20:29:35.798-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-01T20:29:35.800-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-01T20:29:35.804-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-01T20:29:35.805-03:00  INFO 31172 --- [CP-Drone] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-5)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-01T20:29:35.840-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-01T20:29:35.840-03:00 DEBUG 31172 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    drop table if exists drone cascade 
+2025-10-01T20:29:35.840-03:00 DEBUG 31172 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    drop table if exists mission cascade 
+2025-10-01T20:29:35.840-03:00 DEBUG 31172 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    create table drone (
+        capacity_battery integer not null,
+        id uuid not null,
+        status varchar(50) not null,
+        model varchar(100) not null,
+        primary key (id)
+    )
+2025-10-01T20:29:35.841-03:00 DEBUG 31172 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    create table mission (
+        date_agenda date not null,
+        usage_battery integer not null,
+        drone_id uuid not null,
+        id uuid not null,
+        localization varchar(50) not null,
+        description varchar(100) not null,
+        primary key (id)
+    )
+2025-10-01T20:29:35.842-03:00 DEBUG 31172 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    alter table if exists mission 
+       add constraint FKpecghq3rkd466r7rp8ew0g7b 
+       foreign key (drone_id) 
+       references drone
+2025-10-01T20:29:35.842-03:00  INFO 31172 --- [CP-Drone] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-01T20:29:35.923-03:00  WARN 31172 --- [CP-Drone] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-01T20:29:36.001-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/console'. Database available at 'jdbc:h2:mem:blog_database'
+2025-10-01T20:29:36.010-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-10-01T20:29:36.022-03:00  INFO 31172 --- [CP-Drone] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-10-01T20:29:36.026-03:00  INFO 31172 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : Started CpDroneApplication in 0.5 seconds (process running for 1254.978)
+2025-10-01T20:29:36.027-03:00  INFO 31172 --- [CP-Drone] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-10-01T20:29:55.913-03:00  INFO 31172 --- [CP-Drone] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-01T20:29:55.923-03:00  INFO 31172 --- [CP-Drone] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-01T20:29:55.927-03:00  INFO 31172 --- [CP-Drone] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-01T20:29:55.929-03:00 DEBUG 31172 --- [CP-Drone] [SpringApplicationShutdownHook] org.hibernate.SQL                        : 
+    drop table if exists drone cascade 
+2025-10-01T20:29:55.931-03:00 DEBUG 31172 --- [CP-Drone] [SpringApplicationShutdownHook] org.hibernate.SQL                        : 
+    drop table if exists mission cascade 
+2025-10-01T20:29:55.933-03:00  WARN 31172 --- [CP-Drone] [SpringApplicationShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2025-10-01T20:29:55.933-03:00  INFO 31172 --- [CP-Drone] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2025-10-01T20:29:55.935-03:00  INFO 31172 --- [CP-Drone] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2025-10-01T20:29:59.527-03:00  INFO 16004 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : Starting CpDroneApplication using Java 24 with PID 16004 (C:\Users\Charllot\Downloads\CP-Drone\CP-Drone\target\classes started by Charllot in C:\Users\Charllot\Downloads\CP-Drone\CP-Drone)
+2025-10-01T20:29:59.529-03:00  INFO 16004 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-01T20:29:59.579-03:00  INFO 16004 --- [CP-Drone] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-10-01T20:29:59.580-03:00  INFO 16004 --- [CP-Drone] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-10-01T20:30:00.234-03:00  INFO 16004 --- [CP-Drone] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-01T20:30:00.291-03:00  INFO 16004 --- [CP-Drone] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 49 ms. Found 2 JPA repository interfaces.
+2025-10-01T20:30:00.773-03:00  INFO 16004 --- [CP-Drone] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-10-01T20:30:00.789-03:00  INFO 16004 --- [CP-Drone] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-01T20:30:00.789-03:00  INFO 16004 --- [CP-Drone] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.44]
+2025-10-01T20:30:00.830-03:00  INFO 16004 --- [CP-Drone] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-01T20:30:00.830-03:00  INFO 16004 --- [CP-Drone] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1250 ms
+2025-10-01T20:30:00.959-03:00  INFO 16004 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-01T20:30:01.129-03:00  INFO 16004 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:blog_database user=SA
+2025-10-01T20:30:01.130-03:00  INFO 16004 --- [CP-Drone] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-01T20:30:01.167-03:00  INFO 16004 --- [CP-Drone] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-01T20:30:01.207-03:00  INFO 16004 --- [CP-Drone] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.26.Final
+2025-10-01T20:30:01.234-03:00  INFO 16004 --- [CP-Drone] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-01T20:30:01.454-03:00  INFO 16004 --- [CP-Drone] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-01T20:30:01.541-03:00  INFO 16004 --- [CP-Drone] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-01T20:30:02.492-03:00  INFO 16004 --- [CP-Drone] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-01T20:30:02.504-03:00 DEBUG 16004 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    drop table if exists drone cascade 
+2025-10-01T20:30:02.508-03:00 DEBUG 16004 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    drop table if exists mission cascade 
+2025-10-01T20:30:02.512-03:00 DEBUG 16004 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    create table drone (
+        capacity_battery integer not null,
+        id uuid not null,
+        status varchar(50) not null,
+        model varchar(100) not null,
+        primary key (id)
+    )
+2025-10-01T20:30:02.518-03:00 DEBUG 16004 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    create table mission (
+        date_agenda date not null,
+        usage_battery integer not null,
+        drone_id uuid not null,
+        id uuid not null,
+        localization varchar(50) not null,
+        description varchar(100) not null,
+        primary key (id)
+    )
+2025-10-01T20:30:02.520-03:00 DEBUG 16004 --- [CP-Drone] [restartedMain] org.hibernate.SQL                        : 
+    alter table if exists mission 
+       add constraint FKpecghq3rkd466r7rp8ew0g7b 
+       foreign key (drone_id) 
+       references drone
+2025-10-01T20:30:02.533-03:00  INFO 16004 --- [CP-Drone] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-01T20:30:03.323-03:00  WARN 16004 --- [CP-Drone] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-01T20:30:03.832-03:00  INFO 16004 --- [CP-Drone] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/console'. Database available at 'jdbc:h2:mem:blog_database'
+2025-10-01T20:30:03.884-03:00  INFO 16004 --- [CP-Drone] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-10-01T20:30:03.915-03:00  INFO 16004 --- [CP-Drone] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-10-01T20:30:03.922-03:00  INFO 16004 --- [CP-Drone] [restartedMain] b.com.fiap.CP_Drone.CpDroneApplication   : Started CpDroneApplication in 4.761 seconds (process running for 5.399)
+2025-10-01T20:30:15.740-03:00  INFO 16004 --- [CP-Drone] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-01T20:30:15.740-03:00  INFO 16004 --- [CP-Drone] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-01T20:30:15.741-03:00  INFO 16004 --- [CP-Drone] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-10-01T20:30:15.895-03:00 TRACE 16004 --- [CP-Drone] [http-nio-8080-exec-1] o.s.t.i.TransactionInterceptor           : Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2025-10-01T20:30:15.911-03:00 TRACE 16004 --- [CP-Drone] [http-nio-8080-exec-1] o.s.t.i.TransactionInterceptor           : Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2025-10-01T20:30:15.927-03:00 DEBUG 16004 --- [CP-Drone] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    insert 
+    into
+        mission
+        (date_agenda, description, drone_id, localization, usage_battery, id) 
+    values
+        (?, ?, ?, ?, ?, ?)
+2025-10-01T20:30:15.938-03:00  WARN 16004 --- [CP-Drone] [http-nio-8080-exec-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 23506, SQLState: 23506
+2025-10-01T20:30:15.938-03:00 ERROR 16004 --- [CP-Drone] [http-nio-8080-exec-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : Referential integrity constraint violation: "FKPECGHQ3RKD466R7RP8EW0G7B: PUBLIC.MISSION FOREIGN KEY(DRONE_ID) REFERENCES PUBLIC.DRONE(ID) (UUID '8ff6fae2-0da5-476c-a14d-2e63ec9deaa3')"; SQL statement:
+insert into mission (date_agenda,description,drone_id,localization,usage_battery,id) values (?,?,?,?,?,?) [23506-232]
+2025-10-01T20:30:15.973-03:00  WARN 16004 --- [CP-Drone] [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.dao.DataIntegrityViolationException: could not execute statement [Referential integrity constraint violation: "FKPECGHQ3RKD466R7RP8EW0G7B: PUBLIC.MISSION FOREIGN KEY(DRONE_ID) REFERENCES PUBLIC.DRONE(ID) (UUID '8ff6fae2-0da5-476c-a14d-2e63ec9deaa3')"; SQL statement:<EOL>insert into mission (date_agenda,description,drone_id,localization,usage_battery,id) values (?,?,?,?,?,?) [23506-232]] [insert into mission (date_agenda,description,drone_id,localization,usage_battery,id) values (?,?,?,?,?,?)]; SQL [insert into mission (date_agenda,description,drone_id,localization,usage_battery,id) values (?,?,?,?,?,?)]; constraint [KPECGHQ3RKD466R7RP8EW0G7B]]
+2025-10-01T20:30:32.202-03:00 TRACE 16004 --- [CP-Drone] [http-nio-8080-exec-5] o.s.t.i.TransactionInterceptor           : Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2025-10-01T20:30:32.206-03:00 TRACE 16004 --- [CP-Drone] [http-nio-8080-exec-5] o.s.t.i.TransactionInterceptor           : Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2025-10-01T20:30:32.207-03:00 DEBUG 16004 --- [CP-Drone] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    insert 
+    into
+        drone
+        (capacity_battery, model, status, id) 
+    values
+        (?, ?, ?, ?)
+2025-10-01T20:30:38.533-03:00  WARN 16004 --- [CP-Drone] [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'id': Failed to convert value of type 'java.lang.String' to required type 'java.util.UUID'; Invalid UUID string: name]
+2025-10-01T20:30:44.149-03:00 TRACE 16004 --- [CP-Drone] [http-nio-8080-exec-9] o.s.t.i.TransactionInterceptor           : Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2025-10-01T20:30:44.150-03:00 TRACE 16004 --- [CP-Drone] [http-nio-8080-exec-9] o.s.t.i.TransactionInterceptor           : Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2025-10-01T20:30:44.150-03:00 DEBUG 16004 --- [CP-Drone] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    insert 
+    into
+        mission
+        (date_agenda, description, drone_id, localization, usage_battery, id) 
+    values
+        (?, ?, ?, ?, ?, ?)
+2025-10-01T20:30:44.153-03:00  WARN 16004 --- [CP-Drone] [http-nio-8080-exec-9] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 23506, SQLState: 23506
+2025-10-01T20:30:44.153-03:00 ERROR 16004 --- [CP-Drone] [http-nio-8080-exec-9] o.h.engine.jdbc.spi.SqlExceptionHelper   : Referential integrity constraint violation: "FKPECGHQ3RKD466R7RP8EW0G7B: PUBLIC.MISSION FOREIGN KEY(DRONE_ID) REFERENCES PUBLIC.DRONE(ID) (UUID '8ff6fae2-0da5-476c-a14d-2e63ec9deaa3')"; SQL statement:
+insert into mission (date_agenda,description,drone_id,localization,usage_battery,id) values (?,?,?,?,?,?) [23506-232]
+2025-10-01T20:30:44.156-03:00  WARN 16004 --- [CP-Drone] [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.dao.DataIntegrityViolationException: could not execute statement [Referential integrity constraint violation: "FKPECGHQ3RKD466R7RP8EW0G7B: PUBLIC.MISSION FOREIGN KEY(DRONE_ID) REFERENCES PUBLIC.DRONE(ID) (UUID '8ff6fae2-0da5-476c-a14d-2e63ec9deaa3')"; SQL statement:<EOL>insert into mission (date_agenda,description,drone_id,localization,usage_battery,id) values (?,?,?,?,?,?) [23506-232]] [insert into mission (date_agenda,description,drone_id,localization,usage_battery,id) values (?,?,?,?,?,?)]; SQL [insert into mission (date_agenda,description,drone_id,localization,usage_battery,id) values (?,?,?,?,?,?)]; constraint [KPECGHQ3RKD466R7RP8EW0G7B]]
+2025-10-01T20:30:58.848-03:00 TRACE 16004 --- [CP-Drone] [http-nio-8080-exec-6] o.s.t.i.TransactionInterceptor           : Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2025-10-01T20:30:58.849-03:00 TRACE 16004 --- [CP-Drone] [http-nio-8080-exec-6] o.s.t.i.TransactionInterceptor           : Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.save]
+2025-10-01T20:30:58.849-03:00 DEBUG 16004 --- [CP-Drone] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    insert 
+    into
+        mission
+        (date_agenda, description, drone_id, localization, usage_battery, id) 
+    values
+        (?, ?, ?, ?, ?, ?)
+2025-10-01T20:31:06.904-03:00 TRACE 16004 --- [CP-Drone] [http-nio-8080-exec-8] o.s.t.i.TransactionInterceptor           : Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById]
+2025-10-01T20:31:06.934-03:00 DEBUG 16004 --- [CP-Drone] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        m1_0.id,
+        m1_0.date_agenda,
+        m1_0.description,
+        m1_0.drone_id,
+        di1_0.id,
+        di1_0.capacity_battery,
+        di1_0.model,
+        di1_0.status,
+        m1_0.localization,
+        m1_0.usage_battery 
+    from
+        mission m1_0 
+    join
+        drone di1_0 
+            on di1_0.id=m1_0.drone_id 
+    where
+        m1_0.id=?
+2025-10-01T20:31:06.956-03:00 TRACE 16004 --- [CP-Drone] [http-nio-8080-exec-8] o.s.t.i.TransactionInterceptor           : Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById]
+2025-10-01T20:31:36.382-03:00 TRACE 16004 --- [CP-Drone] [http-nio-8080-exec-3] o.s.t.i.TransactionInterceptor           : Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById]
+2025-10-01T20:31:36.382-03:00 DEBUG 16004 --- [CP-Drone] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        m1_0.id,
+        m1_0.date_agenda,
+        m1_0.description,
+        m1_0.drone_id,
+        di1_0.id,
+        di1_0.capacity_battery,
+        di1_0.model,
+        di1_0.status,
+        m1_0.localization,
+        m1_0.usage_battery 
+    from
+        mission m1_0 
+    join
+        drone di1_0 
+            on di1_0.id=m1_0.drone_id 
+    where
+        m1_0.id=?
+2025-10-01T20:31:36.407-03:00 TRACE 16004 --- [CP-Drone] [http-nio-8080-exec-3] o.s.t.i.TransactionInterceptor           : Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById]
+2025-10-01T20:31:52.833-03:00  WARN 16004 --- [CP-Drone] [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'droneId': Failed to convert value of type 'java.lang.String' to required type 'java.util.UUID'; Invalid UUID string: {droneId}]
+2025-10-01T20:33:16.175-03:00  INFO 16004 --- [CP-Drone] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-01T20:33:16.181-03:00  INFO 16004 --- [CP-Drone] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-01T20:33:16.184-03:00  INFO 16004 --- [CP-Drone] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-01T20:33:16.185-03:00 DEBUG 16004 --- [CP-Drone] [SpringApplicationShutdownHook] org.hibernate.SQL                        : 
+    drop table if exists drone cascade 
+2025-10-01T20:33:16.187-03:00 DEBUG 16004 --- [CP-Drone] [SpringApplicationShutdownHook] org.hibernate.SQL                        : 
+    drop table if exists mission cascade 
+2025-10-01T20:33:16.190-03:00  WARN 16004 --- [CP-Drone] [SpringApplicationShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2025-10-01T20:33:16.190-03:00  INFO 16004 --- [CP-Drone] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-01T20:33:16.193-03:00  INFO 16004 --- [CP-Drone] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
