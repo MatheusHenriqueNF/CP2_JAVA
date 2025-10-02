@@ -80,7 +80,7 @@ O ranking permite:
 
 ### 📂 Clonar o repositório
 git clone https://github.com/MatheusHenriqueNF/CP2_JAVA.git
-cd Project-Mission-Drone
+cd CP2_JAVA
 
 ### ⚙️ Compilar o projeto
 mvn clean install
